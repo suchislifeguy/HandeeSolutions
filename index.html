@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Handee Solutions | Licensed Building & Structural Contractors | Brisbane QLD</title>
-    <meta name="description" content="Licensed Building & Structural Contractors serving North Brisbane & Moreton Bay and surrounds with 25+ years experience in remedial carpentry, structural waterproofing, renovations & body corporate maintenance.">
+    <title>Handee Solutions | Licensed Building & Structural Contractors</title>
+    <meta name="description" content="Licensed Building & Structural Contractors serving North Brisbane & Moreton Bay. Remedial carpentry, structural waterproofing, renovations & body corporate maintenance.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -25,6 +25,8 @@
             --golden: #E6A24A;
             --text: #2C3E2E;
             --text-dim: #6B7C6E;
+            --paper-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 20px 40px rgba(0,0,0,0.05);
+            --sidebar-width: 280px;
         }
         
         * {
@@ -38,10 +40,12 @@
             background: var(--secondary);
             color: var(--text);
             line-height: 1.6;
-            overflow-x: hidden;
+            height: 100vh;
+            overflow: hidden; /* Prevent body scroll, we handle it internally */
+            display: flex;
         }
         
-        /* Organic garden-inspired background */
+        /* Organic background texture */
         body::before {
             content: '';
             position: fixed;
@@ -52,1167 +56,703 @@
             background: 
                 radial-gradient(circle at 20% 30%, rgba(139, 168, 136, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(230, 162, 74, 0.06) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(217, 118, 66, 0.04) 0%, transparent 60%);
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233D5340' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             pointer-events: none;
             z-index: 0;
         }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
+
+        /* --- BOOK NAVIGATION (Sidebar) --- */
+        .book-spine {
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(139, 168, 136, 0.3);
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            padding: 2rem;
             position: relative;
-            z-index: 1;
+            flex-shrink: 0;
         }
-        
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(249, 246, 241, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(139, 168, 136, 0.2);
-            z-index: 1000;
-            animation: slideDown 0.6s ease-out;
-        }
-        
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-            }
-            to {
-                transform: translateY(0);
-            }
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
+
         .logo {
+            margin-bottom: 3rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
         }
-        
+
         .logo-image {
-            height: 50px;
+            height: 40px;
             width: auto;
         }
-        
+
         .logo-text {
             font-family: 'Space Mono', monospace;
-            font-size: 1.2rem;
             font-weight: 700;
-            letter-spacing: 0.05em;
+            font-size: 1rem;
             color: var(--forest);
             line-height: 1.2;
         }
-        
-        @media (max-width: 640px) {
-            .logo-text {
-                display: none;
-            }
-            
-            .logo-image {
-                height: 40px;
-            }
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 3rem;
+
+        .nav-chapters {
             list-style: none;
-        }
-        
-        .nav-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--terracotta);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--terracotta);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding-top: 100px;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--sand) 100%);
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 50%;
-            height: 60%;
-            background: radial-gradient(circle at center, rgba(139, 168, 136, 0.15) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-        }
-        
-        .hero-label {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--terracotta);
-            letter-spacing: 0.15em;
-            margin-bottom: 2rem;
-            animation: fadeIn 0.8s ease-out 0.2s both;
-            text-transform: uppercase;
-        }
-        
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-            animation: fadeIn 0.8s ease-out 0.4s both;
-            color: var(--forest);
-        }
-        
-        .hero-subtitle {
-            font-size: 1.4rem;
-            color: var(--text-dim);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-            animation: fadeIn 0.8s ease-out 0.6s both;
-            max-width: 650px;
-        }
-        
-        .hero-meta {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            margin-bottom: 3rem;
-            animation: fadeIn 0.8s ease-out 0.8s both;
-        }
-        
-        .hero-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(139, 168, 136, 0.1);
-            border-radius: 4px;
-        }
-        
-        .hero-meta span::before {
-            content: '✓';
-            color: var(--sage);
-            font-weight: bold;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .cta-primary {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            background: var(--terracotta);
-            color: var(--cream);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            border: 2px solid var(--terracotta);
-            animation: fadeIn 0.8s ease-out 1s both;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(200, 92, 60, 0.2);
-        }
-        
-        .cta-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--accent-dim);
-            transition: left 0.3s ease;
-        }
-        
-        .cta-primary span {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .cta-primary:hover::before {
-            left: 0;
-        }
-        
-        .cta-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(200, 92, 60, 0.3);
-        }
-        
-        /* Section Headers */
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-            position: relative;
-        }
-        
-        .section-label {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--terracotta);
-            letter-spacing: 0.15em;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-        
-        .section-header h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--forest);
-        }
-        
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            max-width: 700px;
-            margin: 1.5rem auto 0;
-        }
-        
-        /* About Section */
-        .about {
-            padding: 8rem 0;
-            background: var(--cream);
-            position: relative;
-        }
-        
-        .about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--sage-light), transparent);
-        }
-        
-        .about-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .about-content h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            color: var(--forest);
-            margin-bottom: 2rem;
-            letter-spacing: -0.02em;
-        }
-        
-        .about-text {
-            font-size: 1.2rem;
-            color: var(--text);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-        
-        .about-highlight {
-            background: rgba(139, 168, 136, 0.15);
-            border-left: 4px solid var(--sage);
-            padding: 2rem;
-            margin: 3rem 0;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--forest);
-            line-height: 1.6;
-        }
-        
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-        
-        .stat-item {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(44, 62, 46, 0.05);
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--terracotta);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-label {
-            font-size: 1rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        /* Founder Section */
-        .founder-section {
-            margin-top: 5rem;
-            padding-top: 4rem;
-            border-top: 1px solid rgba(139, 168, 136, 0.2);
-        }
-        
-        .founder-content {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-        
-        .founder-image-wrapper {
-            position: relative;
-        }
-        
-        .founder-image {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 8px 30px rgba(44, 62, 46, 0.15);
-            transition: transform 0.3s ease;
-        }
-        
-        .founder-image:hover {
-            transform: scale(1.02);
-        }
-        
-        .founder-image-border {
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: 10px;
-            bottom: 10px;
-            border: 2px solid var(--sage);
-            border-radius: 8px;
-            z-index: -1;
-        }
-        
-        .founder-text h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--forest);
-            margin-bottom: 0.5rem;
-        }
-        
-        .founder-title {
-            font-size: 1.1rem;
-            color: var(--terracotta);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .founder-bio {
-            font-size: 1.1rem;
-            color: var(--text);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-        
-        @media (max-width: 768px) {
-            .founder-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .founder-image-wrapper {
-                max-width: 300px;
-                margin: 0 auto;
-            }
-        }
-        
-        /* Services Section */
-        .services {
-            padding: 8rem 0;
-            background: var(--secondary);
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background: white;
-            padding: 3rem 2rem;
-            border: 1px solid rgba(139, 168, 136, 0.2);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(44, 62, 46, 0.05);
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--sage), var(--terracotta));
-            transition: left 0.4s ease;
-        }
-        
-        .service-card:hover::before {
-            left: 0;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(200, 92, 60, 0.15);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-card h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.01em;
-            color: var(--forest);
-        }
-        
-        .service-card p {
-            color: var(--text-dim);
-            line-height: 1.7;
-        }
-        
-        /* Integrity Section */
-        .integrity {
-            padding: 8rem 0;
-            background: linear-gradient(135deg, var(--sand) 0%, var(--cream) 100%);
-        }
-        
-        .integrity-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .integrity-text h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 2rem;
-            letter-spacing: -0.02em;
-            color: var(--forest);
-        }
-        
-        .integrity-text p {
-            font-size: 1.2rem;
-            color: var(--text);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-        
-        .spec-box {
-            background: white;
-            border: 3px solid var(--sage);
-            padding: 2rem;
-            margin-top: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(139, 168, 136, 0.1);
-        }
-        
-        .spec-box-label {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--terracotta);
-            letter-spacing: 0.15em;
-            margin-bottom: 1rem;
-        }
-        
-        .spec-box h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--forest);
-        }
-        
-        .principles {
-            display: grid;
-            gap: 2rem;
-        }
-        
-        .principle {
-            background: white;
-            padding: 2rem;
-            border-left: 4px solid var(--terracotta);
-            border-radius: 4px;
-            box-shadow: 0 2px 10px rgba(44, 62, 46, 0.05);
-        }
-        
-        .principle h4 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--forest);
-        }
-        
-        .principle p {
-            color: var(--text);
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            padding: 8rem 0;
-            background: var(--secondary);
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        .testimonial-card {
-            background: white;
-            padding: 2.5rem;
-            border-left: 4px solid var(--golden);
-            position: relative;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(44, 62, 46, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(230, 162, 74, 0.15);
-        }
-        
-        .testimonial-quote {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            color: var(--text);
-        }
-        
-        .testimonial-author {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-            color: var(--forest);
-        }
-        
-        .testimonial-role {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-        }
-        
-        /* Contact Section */
-        .contact {
-            padding: 8rem 0;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--sand) 100%);
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-        
-        .contact-info h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--forest);
-        }
-        
-        .contact-details {
-            display: grid;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: start;
-            gap: 1rem;
-        }
-        
-        .contact-icon {
-            font-size: 1.5rem;
-            margin-top: 0.2rem;
-        }
-        
-        .contact-item-content h4 {
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-            font-size: 1.1rem;
-            color: var(--forest);
-        }
-        
-        .contact-item-content a {
-            color: var(--text);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .contact-item-content a:hover {
-            color: var(--terracotta);
-        }
-        
-        .contact-form {
-            background: white;
-            padding: 3rem;
-            border: 1px solid rgba(139, 168, 136, 0.2);
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(44, 62, 46, 0.08);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--forest);
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: var(--cream);
-            border: 1px solid rgba(139, 168, 136, 0.3);
-            color: var(--text);
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--sage);
-            background: white;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-        
-        .submit-btn {
-            width: 100%;
-            padding: 1.2rem;
-            background: var(--terracotta);
-            color: var(--cream);
-            border: none;
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-            box-shadow: 0 4px 15px rgba(200, 92, 60, 0.2);
-        }
-        
-        .submit-btn:hover {
-            background: var(--accent-dim);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(200, 92, 60, 0.3);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--forest);
-            padding: 3rem 0;
-            border-top: 1px solid rgba(139, 168, 136, 0.3);
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .footer-left {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
         }
-        
-        .footer-logo {
+
+        .chapter-link {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            text-decoration: none;
+            color: var(--text-dim);
             font-family: 'Space Mono', monospace;
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            color: var(--sand);
-        }
-        
-        .footer-credentials {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--sage-light);
-        }
-        
-        .footer-right {
-            text-align: right;
-            color: var(--sage-light);
             font-size: 0.9rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 968px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .integrity-content,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 640px) {
-            .container {
-                padding: 0 1rem;
-            }
-            
-            nav {
-                padding: 1rem;
-            }
-            
-            .hero-meta {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .footer-right {
-                text-align: center;
-            }
-        }
-        
-        /* Smooth scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Mobile menu toggle */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--forest);
-            font-size: 1.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
             cursor: pointer;
         }
-        
+
+        .chapter-link:hover {
+            background: rgba(139, 168, 136, 0.1);
+            color: var(--forest);
+        }
+
+        .chapter-link.active {
+            background: var(--terracotta);
+            color: var(--cream);
+            box-shadow: 0 4px 10px rgba(200, 92, 60, 0.2);
+        }
+
+        .chapter-num {
+            opacity: 0.5;
+            margin-right: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .contact-mini {
+            margin-top: auto;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            padding-top: 1.5rem;
+        }
+
+        /* --- BOOK CONTENT AREA --- */
+        .book-content {
+            flex: 1;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 4rem 6rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            background: var(--secondary);
+            z-index: 1;
+        }
+
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            z-index: 2;
+        }
+
+        /* Custom Scrollbar */
+        .page::-webkit-scrollbar {
+            width: 8px;
+        }
+        .page::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .page::-webkit-scrollbar-thumb {
+            background: var(--sage);
+            border-radius: 4px;
+        }
+
+        /* --- PAGE STYLES --- */
+        .page-header {
+            margin-bottom: 4rem;
+            border-bottom: 1px solid rgba(139, 168, 136, 0.2);
+            padding-bottom: 2rem;
+        }
+
+        .page-eyebrow {
+            font-family: 'Space Mono', monospace;
+            color: var(--terracotta);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        h1, h2, h3 {
+            color: var(--forest);
+        }
+
+        .page-title {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        /* Hero Page Specifics */
+        .hero-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--sand) 100%);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+            font-family: 'Space Mono', monospace;
+            color: var(--text-dim);
+        }
+
+        .hero-stats div {
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.5);
+            border: 1px solid rgba(139, 168, 136, 0.2);
+            border-radius: 4px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border: 1px solid rgba(139, 168, 136, 0.2);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-color: var(--sage);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        /* --- NEW GALLERY SECTION --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(139, 168, 136, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(139, 168, 136, 0.1);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--terracotta);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--forest);
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+        }
+
+        /* --- NEW TESTIMONIALS SECTION --- */
+        .reviews-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .review-intro h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-left: 4px solid var(--golden);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 6rem;
+            color: rgba(230, 162, 74, 0.2);
+            line-height: 1;
+        }
+
+        .review-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.4rem;
+            line-height: 1.4;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .review-author {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--forest);
+        }
+
+        .review-location {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* Mobile Adjustments */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 200;
+            background: var(--forest);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
         @media (max-width: 968px) {
-            .menu-toggle {
+            body {
+                flex-direction: column;
+                overflow: auto;
+            }
+
+            .mobile-toggle {
                 display: block;
             }
-            
-            .nav-links {
+
+            .book-spine {
                 position: fixed;
-                top: 80px;
-                left: 0;
+                top: 0;
+                left: -100%;
                 width: 100%;
-                background: rgba(249, 246, 241, 0.98);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1.5rem;
-                display: none;
-                border-bottom: 1px solid rgba(139, 168, 136, 0.2);
+                height: 100vh;
+                transition: left 0.3s ease;
+                background: var(--cream);
             }
-            
-            .nav-links.active {
-                display: flex;
+
+            .book-spine.open {
+                left: 0;
+            }
+
+            .book-content {
+                height: auto;
+                overflow: visible;
+            }
+
+            .page {
+                position: relative;
+                height: auto;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                padding: 4rem 1.5rem;
+                display: none; /* Hide non-active pages on mobile to prevent huge scroll */
+            }
+
+            .page.active {
+                display: block;
+            }
+
+            .reviews-layout {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="https://handeesolutions.com.au/wp-content/uploads/2025/01/cropped-HS-PTY-LTD-LOGO.jpg" alt="Handee Solutions Logo" class="logo-image">
-                <span class="logo-text">HANDEE SOLUTIONS</span>
-            </div>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#integrity">Our Work</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-label">Licensed Builders & Contractors • Est. 2001</div>
-                    <h1>Servicing Brisbane &<br>Moreton Bay</h1>
-                    <p class="hero-subtitle"> Whether you are managing a large-scale Body Corporate or simply looking to upgrade your own home, we provide high-quality, cost-effective solutions for every project. From internal renovations to essential outdoor safety, we handle the repairs so you don’t have to. </p>
-                    <div class="hero-meta">
-                        <span>QBCC Licensed 15462565</span>
-                        <span>25+ Years Experience</span>
-                        <span>White & Blue Card Holders</span>
-                    </div>
-                    <a href="#contact" class="cta-primary"><span>Start Your Project</span></a>
+    <button class="mobile-toggle" onclick="toggleMobileMenu()">MENU</button>
+
+    <!-- NAVIGATION SPINE -->
+    <nav class="book-spine" id="sidebar">
+        <div class="logo">
+            <img src="https://handeesolutions.com.au/wp-content/uploads/2025/01/cropped-HS-PTY-LTD-LOGO.jpg" alt="Handee Solutions Logo" class="logo-image">
+            <div class="logo-text">HANDEE<br>SOLUTIONS</div>
+        </div>
+
+        <ul class="nav-chapters">
+            <li onclick="navigateTo('home')"><div class="chapter-link active" id="link-home"><span class="chapter-num">00</span>Home</div></li>
+            <li onclick="navigateTo('about')"><div class="chapter-link" id="link-about"><span class="chapter-num">01</span>About Us</div></li>
+            <li onclick="navigateTo('services')"><div class="chapter-link" id="link-services"><span class="chapter-num">02</span>Services</div></li>
+            <li onclick="navigateTo('work')"><div class="chapter-link" id="link-work"><span class="chapter-num">03</span>Our Work</div></li>
+            <li onclick="navigateTo('reviews')"><div class="chapter-link" id="link-reviews"><span class="chapter-num">04</span>Testimonials</div></li>
+            <li onclick="navigateTo('contact')"><div class="chapter-link" id="link-contact"><span class="chapter-num">05</span>Contact</div></li>
+        </ul>
+
+        <div class="contact-mini">
+            <p><strong>QBCC:</strong> 15462565</p>
+            <p><strong>Call:</strong> 0400 123 456</p> <!-- Replace with actual number if known -->
+            <p style="margin-top:0.5rem">© 2026 Handee Solutions</p>
+        </div>
+    </nav>
+
+    <!-- CONTENT AREA -->
+    <main class="book-content">
+
+        <!-- PAGE 0: HOME -->
+        <section id="home" class="page hero-page active">
+            <div style="max-width: 800px;">
+                <span class="page-eyebrow">Est. 2001 • Brisbane QLD</span>
+                <h1 class="page-title">We don't just build.<br>We fortify.</h1>
+                <p style="font-size: 1.4rem; color: var(--text-dim); margin-top: 1.5rem; max-width: 600px;">
+                    Licensed contractors specializing in structural integrity. From body corporate maintenance to NDIS modifications, we fix the physics first, then perfect the finish.
+                </p>
+                <div class="hero-stats">
+                    <div>✓ QBCC Licensed</div>
+                    <div>✓ 25+ Years Exp</div>
+                    <div>✓ Fully Insured</div>
                 </div>
+                <button onclick="navigateTo('contact')" style="margin-top: 3rem; padding: 1rem 2rem; background: var(--terracotta); color: white; border: none; font-family: 'Rajdhani'; font-weight: 700; font-size: 1.1rem; cursor: pointer;">START PROJECT</button>
             </div>
         </section>
 
-        <section id="about" class="about">
-            <div class="container">
-                <div class="about-content">
-                    <h2>Built on a Foundation of Trust</h2>
-                    <p class="about-text">Since 2001, Handee Solutions has been North Brisbane and Bayside's trusted partner for building and structural work. We're not just licensed contractors—we're problem solvers who understand that quality construction starts with addressing what you can't see.</p>
-                    
-                    <p class="about-text">Our team approaches every project with the same philosophy: solve the physics first, perfect the aesthetic second. Whether it's identifying hidden water ingress, restoring structural integrity to timber frames, or delivering a premium kitchen renovation, we bring surgical precision to every detail.</p>
-                    
-                    <div class="about-highlight">
+        <!-- PAGE 1: ABOUT -->
+        <section id="about" class="page">
+            <div class="page-header">
+                <span class="page-eyebrow">Chapter 01</span>
+                <h2 class="page-title">The Foundation</h2>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
+                <div>
+                    <h3 style="font-size: 2rem; margin-bottom: 1.5rem;">More than just builders.</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--text);">
+                        Since 2001, Handee Solutions has been North Brisbane and Bayside's trusted partner for building and structural work. We're not just licensed contractors—we're problem solvers who understand that quality construction starts with addressing what you can't see.
+                    </p>
+                    <p style="font-size: 1.1rem; color: var(--text);">
                         "We treat every job as if we were working on our own home—with efficiency, respect, and a commitment to leaving work areas cleaner than we found them."
-                    </div>
-                    
-                    <p class="about-text">From body corporate maintenance to NDIS home modifications, from remedial carpentry to complete renovations, we've built our reputation on doing it right the first time. Every team member holds current White Cards and Blue Cards, and we maintain full QBCC licensing with comprehensive insurance coverage.</p>
-                    
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">25+</span>
-                            <span class="stat-label">Years Serving Brisbane</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Licensed & Insured</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">1000s</span>
-                            <span class="stat-label">Projects Completed</span>
-                        </div>
-                    </div>
-                    
-                    <div class="founder-section">
-                        <div class="founder-content">
-                            <div class="founder-image-wrapper">
-                                <div class="founder-image-border"></div>
-                                <img src="https://handeesolutions.com.au/wp-content/uploads/2022/05/Tony-Sumpton-1-300x272.jpg" alt="Tony Sumpton - Founder" class="founder-image">
-                            </div>
-                            <div class="founder-text">
-                                <h3>Tony Sumpton</h3>
-                                <div class="founder-title">Founder & Principal Builder</div>
-                                <p class="founder-bio">With over 25 years of hands-on experience in Brisbane's building industry, Tony established Handee Solutions on a simple principle: exceptional craftsmanship starts with understanding the fundamentals of structural integrity.</p>
-                                <p class="founder-bio">A fully licensed builder who still works alongside his team on every major project, Tony brings both technical expertise and personal accountability to every job. His approach combines old-school attention to detail with modern building techniques, ensuring that each project meets the highest standards of quality and durability.</p>
-                                <p class="founder-bio">"I believe in building relationships as solid as the structures we create. That's why we treat every home and every client with the same care and respect we'd want for our own families."</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="services" class="services">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-label">What We Do</div>
-                    <h2>Core Services</h2>
-                    <p>Get everything done in one place. From structural integrity to premium finishes, we handle the complete scope with surgical precision.</p>
+                    </p>
                 </div>
                 
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">🔧</div>
-                        <h3>Remedial Carpentry</h3>
-                        <p>Identifying structural fatigue and restoring integrity. From Brisbane's classic timber decks to modern architectural framing, we diagnose and repair with precision.</p>
+                <div style="background: white; padding: 2rem; border: 1px solid rgba(139,168,136,0.2); border-radius: 8px;">
+                    <img src="https://handeesolutions.com.au/wp-content/uploads/2022/05/Tony-Sumpton-1-300x272.jpg" alt="Tony Sumpton" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h4 style="font-size: 1.4rem; color: var(--forest);">Tony Sumpton</h4>
+                    <span style="color: var(--terracotta); font-family: 'Space Mono'; font-size: 0.9rem;">FOUNDER & PRINCIPAL</span>
+                    <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.95rem;">
+                        With over 25 years of hands-on experience, Tony combines old-school attention to detail with modern building techniques. He still works alongside the team to ensure every project meets his rigorous standards.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: SERVICES -->
+        <section id="services" class="page">
+            <div class="page-header">
+                <span class="page-eyebrow">Chapter 02</span>
+                <h2 class="page-title">Capabilities</h2>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">🔧</span>
+                    <h3>Remedial Carpentry</h3>
+                    <p style="color: var(--text-dim); margin-top: 1rem;">Restoring structural integrity to timber frames, decks, and balconies. We diagnose fatigue and repair with precision.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">💧</span>
+                    <h3>Waterproofing</h3>
+                    <p style="color: var(--text-dim); margin-top: 1rem;">Certified liquid and sheet membrane systems. We specialize in finding ingress points others miss.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🏢</span>
+                    <h3>Body Corporate</h3>
+                    <p style="color: var(--text-dim); margin-top: 1rem;">Site management, safety audits, bollards, line marking, and complex multi-unit maintenance.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">✨</span>
+                    <h3>Renovations</h3>
+                    <p style="color: var(--text-dim); margin-top: 1rem;">Kitchens, bathrooms, and full internal remodels managed with technical precision.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">♿</span>
+                    <h3>NDIS & CHSP</h3>
+                    <p style="color: var(--text-dim); margin-top: 1rem;">Modifications for independence: Grab rails, ramps, platform steps, and accessibility upgrades.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🏠</span>
+                    <h3>Real Estate</h3>
+                    <p style="color: var(--text-dim); margin-top: 1rem;">Efficient tenant coordination and bond repairs. We work on a "do not exceed" basis.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: OUR WORK (NEW) -->
+        <section id="work" class="page">
+            <div class="page-header">
+                <span class="page-eyebrow">Chapter 03</span>
+                <h2 class="page-title">Field Gallery</h2>
+                <p style="margin-top: 1rem; color: var(--text-dim);">A selection of our recent projects across Brisbane.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <!-- Placeholder image: Wheelchair ramp -->
+                    <img src="https://images.unsplash.com/photo-1594943264426-5d2023d8c474?auto=format&fit=crop&q=80&w=800" alt="Accessibility Ramp" class="project-image">
+                    <div class="project-info">
+                        <span class="project-tag">NDIS / Access</span>
+                        <h3 class="project-title">Outdoor Accessibility Ramp</h3>
+                        <p class="project-desc">Custom timber construction ensuring safe, compliant access while blending with the home's exterior.</p>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">💧</div>
-                        <h3>Structural Waterproofing</h3>
-                        <p>Certified liquid-applied and sheet membrane systems. We specialize in identifying ingress points that others miss, following rigorous multi-layer protocols.</p>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <!-- Placeholder image: Kitchen -->
+                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=800" alt="Kitchen Renovation" class="project-image">
+                    <div class="project-info">
+                        <span class="project-tag">Renovation</span>
+                        <h3 class="project-title">Modern Kitchen Overhaul</h3>
+                        <p class="project-desc">Complete strip-out and rebuild, featuring stone benchtops and optimized cabinetry layout.</p>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">✨</div>
-                        <h3>Premium Renovations</h3>
-                        <p>Turnkey kitchen and bathroom transformations. High-end delivery managed with technical precision. We treat every job as if working on our own home.</p>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <!-- Placeholder image: Bathroom -->
+                    <img src="https://images.unsplash.com/photo-1620626012053-1c167f7bb5f3?auto=format&fit=crop&q=80&w=800" alt="Bathroom Renovation" class="project-image">
+                    <div class="project-info">
+                        <span class="project-tag">Renovation</span>
+                        <h3 class="project-title">Bathroom Transformation</h3>
+                        <p class="project-desc">Floor-to-ceiling tiling with full waterproof membrane system installation.</p>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">🏢</div>
-                        <h3>Body Corporate</h3>
-                        <p>Trusted site management and complex multi-unit maintenance. Comprehensive solutions for fencing, tiling, painting, safety audits, bollards, and line marking.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">🏠</div>
-                        <h3>Real Estate Services</h3>
-                        <p>Efficient property maintenance including tenant coordination and bond repairs. We work on a "do not exceed" basis and deliver quickly to high standards.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">♿</div>
-                        <h3>NDIS & CHSP</h3>
-                        <p>Specialized home modifications and safety solutions. Installing grab rails, ramps, platform steps, and accessibility features that support independence.</p>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <!-- Placeholder image: Ceiling repair -->
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800" alt="Ceiling Repair" class="project-image">
+                    <div class="project-info">
+                        <span class="project-tag">Remedial</span>
+                        <h3 class="project-title">Water Damaged Ceiling</h3>
+                        <p class="project-desc">Identification of leak source, structural drying, and plaster restoration.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="integrity" class="integrity">
-            <div class="container">
-                <div class="integrity-content">
-                    <div class="integrity-text">
-                        <h2>The Anatomy of Integrity</h2>
-                        <p>Twenty-five years of uncompromising quality in every layer. We don't just build—we fortify. Where others see a surface, we see a system. By focusing on structural protection and multi-layer waterproofing protocols over mere finishes, we ensure your property stands the test of time.</p>
-                        <p>While others focus on the paint, we focus on the protection. Our waterproofing and structural work follows rigorous multi-layer protocols ensuring decades of service.</p>
+        <!-- PAGE 4: TESTIMONIALS (NEW) -->
+        <section id="reviews" class="page">
+            <div class="page-header">
+                <span class="page-eyebrow">Chapter 04</span>
+                <h2 class="page-title">Client Log</h2>
+            </div>
+
+            <div class="reviews-layout">
+                <div class="review-intro">
+                    <h2>Trusted by locals since 2001.</h2>
+                    <p style="font-size: 1.2rem; color: var(--text-dim); line-height: 1.8;">
+                        Our reputation is built on reliability. Whether it's a real estate agent needing a quick fix or a homeowner planning a major renovation, we deliver the same level of care.
+                    </p>
+                    <div style="margin-top: 3rem; padding: 2rem; background: rgba(139, 168, 136, 0.1); border-radius: 8px;">
+                        <span style="font-size: 3rem; font-weight: 700; color: var(--forest);">100%</span>
+                        <p style="font-family: 'Space Mono'; text-transform: uppercase;">Commitment to Quality</p>
                     </div>
-                    
-                    <div class="principles">
-                        <div class="principle">
-                            <h4>DO IT RIGHT</h4>
-                            <p>We're efficient, respectful, and clean up after ourselves, leaving work areas tidy and free of waste.</p>
-                        </div>
-                        <div class="principle">
-                            <h4>FIRST TIME</h4>
-                            <p>Cost-effective and appropriate solutions delivered with surgical technical precision.</p>
-                        </div>
-                        <div class="principle">
-                            <h4>EVERY TIME</h4>
-                            <p>High standards of quality ensuring work is built to last for decades of reliable service.</p>
-                        </div>
+                </div>
+
+                <div class="review-list">
+                    <!-- Review 1 -->
+                    <div class="review-card">
+                        <p class="review-text">"He was really professional, efficient and workmanship was A1 quality."</p>
+                        <div class="review-author">Yvonne</div>
+                        <div class="review-location">Bald Hills, QLD</div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="review-card">
+                        <p class="review-text">"Tony maintains a high standard of quality which ensures that his work is built to last."</p>
+                        <div class="review-author">Angus Lilley</div>
+                        <div class="review-location">Director, Lilley and Power Property Agents</div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="review-card">
+                        <p class="review-text">"Thanks very much for doing the job, your work is really appreciated."</p>
+                        <div class="review-author">Frank A</div>
+                        <div class="review-location">Country Traders Business Centre</div>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="review-card">
+                        <p class="review-text">"He was willing to work around my shift work and was understanding of my busy schedule."</p>
+                        <div class="review-author">Gary and Julie</div>
+                        <div class="review-location">Alderley, QLD</div>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="review-card">
+                        <p class="review-text">"Matt was a very great choice as an employee...very personable, efficient and focused."</p>
+                        <div class="review-author">Joan G</div>
+                        <div class="review-location">Brisbane, QLD</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="testimonials" class="testimonials">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-label">Client Feedback</div>
-                    <h2>What People Say</h2>
+        <!-- PAGE 5: CONTACT -->
+        <section id="contact" class="page">
+            <div class="page-header">
+                <span class="page-eyebrow">Chapter 05</span>
+                <h2 class="page-title">Initiate</h2>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+                <div style="background: white; padding: 3rem; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.05);">
+                    <form action="mailto:tony@handeesolutions.com.au" method="post" enctype="text/plain">
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-family: 'Space Mono'; font-size: 0.8rem; text-transform: uppercase;">Name</label>
+                            <input type="text" style="width: 100%; padding: 1rem; border: 1px solid #ddd; background: var(--secondary); font-family: 'Rajdhani'; font-size: 1rem;" required>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-family: 'Space Mono'; font-size: 0.8rem; text-transform: uppercase;">Email</label>
+                            <input type="email" style="width: 100%; padding: 1rem; border: 1px solid #ddd; background: var(--secondary); font-family: 'Rajdhani'; font-size: 1rem;" required>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-family: 'Space Mono'; font-size: 0.8rem; text-transform: uppercase;">Message</label>
+                            <textarea style="width: 100%; padding: 1rem; border: 1px solid #ddd; background: var(--secondary); font-family: 'Rajdhani'; font-size: 1rem; min-height: 150px;" required></textarea>
+                        </div>
+                        <button type="submit" style="width: 100%; padding: 1.2rem; background: var(--forest); color: white; border: none; font-weight: 700; font-size: 1rem; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">Send Message</button>
+                    </form>
                 </div>
-                
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <p class="testimonial-quote">"Tony maintains a high standard of quality which ensures that his work is built to last."</p>
-                        <div class="testimonial-author">Angus Lilley</div>
-                        <div class="testimonial-role">Director, Principal - Lilley and Power Property Agents</div>
+
+                <div style="padding-top: 2rem;">
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="font-size: 1.5rem; color: var(--forest); margin-bottom: 0.5rem;">Email</h4>
+                        <a href="mailto:tony@handeesolutions.com.au" style="font-size: 1.2rem; color: var(--terracotta); text-decoration: none;">tony@handeesolutions.com.au</a>
                     </div>
                     
-                    <div class="testimonial-card">
-                        <p class="testimonial-quote">"He was willing to work around my shift work and was understanding of my busy schedule."</p>
-                        <div class="testimonial-author">Gary and Julie</div>
-                        <div class="testimonial-role">Alderley, QLD</div>
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="font-size: 1.5rem; color: var(--forest); margin-bottom: 0.5rem;">Service Area</h4>
+                        <p style="font-size: 1.1rem; color: var(--text-dim);">North Brisbane & Moreton Bay<br>Queensland, Australia</p>
                     </div>
-                    
-                    <div class="testimonial-card">
-                        <p class="testimonial-quote">"He was really professional, efficient and workmanship was A1 quality."</p>
-                        <div class="testimonial-author">Yvonne</div>
-                        <div class="testimonial-role">Bald Hills, QLD</div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <p class="testimonial-quote">"Thanks very much for doing the job, your work is really appreciated."</p>
-                        <div class="testimonial-author">Frank A</div>
-                        <div class="testimonial-role">Country Traders Business Centre</div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <p class="testimonial-quote">"Matt was a very great choice as an employee...very personable, efficient and focused."</p>
-                        <div class="testimonial-author">Joan G</div>
-                        <div class="testimonial-role">Brisbane, QLD</div>
+
+                    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.1);">
+                        <p style="font-family: 'Space Mono'; font-size: 0.9rem; color: var(--text-dim);">
+                            <strong>ABN:</strong> 85 679 291 797<br>
+                            <strong>QBCC:</strong> 15462565
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-label">Get In Touch</div>
-                    <h2>Start Work.</h2>
-                </div>
-                
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h2>Let's discuss your project</h2>
-                        <p style="color: var(--text-dim); font-size: 1.1rem;">Contact us today to see how we can assist you with your next building or renovation project.</p>
-                        
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <div class="contact-icon">📧</div>
-                                <div class="contact-item-content">
-                                    <h4>Email</h4>
-                                    <a href="/cdn-cgi/l/email-protection#30445f5e497058515e545555435f5c4544595f5e431e535f5d1e5145"><span class="__cf_email__" data-cfemail="790d161700391118171d1c1c0a16150c0d1016170a571a161457180c">[email&#160;protected]</span></a>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">📍</div>
-                                <div class="contact-item-content">
-                                    <h4>Location</h4>
-                                    <p style="color: var(--text-dim);">North Brisbane & Bayside<br>Queensland, Australia</p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">🔖</div>
-                                <div class="contact-item-content">
-                                    <h4>License</h4>
-                                    <p style="color: var(--text-dim);">QBCC: 15462565<br>ABN: 85 679 291 797</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-form">
-                        <form action="mailto:tony@handeesolutions.com.au" method="post" enctype="text/plain">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">Phone</label>
-                                <input type="tel" id="phone" name="phone">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message">Project Details</label>
-                                <textarea id="message" name="message" required></textarea>
-                            </div>
-                            
-                            <button type="submit" class="submit-btn">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <div class="footer-logo">HANDEE SOLUTIONS PTY LTD</div>
-                    <div class="footer-credentials">QBCC: 15462565 | ABN: 85 679 291 797</div>
-                </div>
-                <div class="footer-right">
-                    <p>© 2026 Handee Solutions Pty Ltd</p>
-                    <p>Licensed Building & Structural Contractors</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-        
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('active');
+    <script>
+        function navigateTo(pageId) {
+            // Remove active class from all links
+            document.querySelectorAll('.chapter-link').forEach(link => {
+                link.classList.remove('active');
             });
-        });
-        
-        // Smooth scroll offset for fixed header
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-   
+
+            // Add active class to clicked link
+            const activeLink = document.getElementById('link-' + pageId);
+            if(activeLink) activeLink.classList.add('active');
+
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show target page
+            const targetPage = document.getElementById(pageId);
+            if(targetPage) {
+                targetPage.classList.add('active');
+                // Scroll to top of new page
+                targetPage.scrollTop = 0;
+            }
+
+            // Close mobile menu if open
+            if(window.innerWidth <= 968) {
+                document.getElementById('sidebar').classList.remove('open');
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('sidebar').classList.toggle('open');
+        }
+
+        // Handle browser back/forward buttons (Optional simple implementation)
+        window.onpopstate = function(event) {
+            // A more robust router would go here, for now we default to home
+            navigateTo('home');
+        };
+    </script>
+</body>
+</html>
