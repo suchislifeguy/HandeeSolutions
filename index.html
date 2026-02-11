@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handee Solutions | Brisbane's Licensed Builders</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #c19b5d; /* Elegant Gold/Brass representing craftsmanship */
+            --dark: #1a1a1a;
+            --light: #f9f9f9;
+            --glass: rgba(255, 255, 255, 0.05);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--dark); color: var(--light); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: -1px; }
+
+        /* Navigation */
+        nav { position: fixed; width: 100%; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid var(--glass); }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=2000') center/cover; padding: 20px; }
+        .hero h1 { font-size: 5rem; line-height: 1; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; max-width: 600px; color: #ccc; margin-bottom: 40px; }
+        .cta { background: var(--primary); color: var(--dark); padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: var(--transition); }
+        .cta:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(193, 155, 93, 0.3); }
+
+        /* Services Grid */
+        .section { padding: 100px 10%; }
+        .section-title { font-size: 3rem; margin-bottom: 60px; text-align: center; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-card { background: var(--glass); padding: 40px; border-radius: 20px; border: 1px solid var(--glass); transition: var(--transition); }
+        .service-card:hover { background: rgba(193, 155, 93, 0.1); border-color: var(--primary); transform: translateY(-10px); }
+        .service-card i { color: var(--primary); margin-bottom: 20px; }
+
+        /* Expert Section (Fence Logic) */
+        .expert-insight { background: #222; border-radius: 30px; padding: 60px; display: flex; align-items: center; gap: 50px; }
+        .insight-content { flex: 1; }
+        .insight-content h3 { color: var(--primary); margin-bottom: 20px; }
+        
+        /* Contact Form */
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        input, textarea { width: 100%; padding: 15px; background: var(--glass); border: 1px solid var(--glass); border-radius: 10px; color: white; margin-bottom: 20px; }
+
+        footer { padding: 50px; text-align: center; border-top: 1px solid var(--glass); color: #666; font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .nav-links { display: none; }
+            .contact-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">HANDEE SOLUTIONS</div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#about">The Tony Method</a>
+            <a href="#contact">Request Quote</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1 data-aos="fade-up">Built to Last.<br>Done Right.</h1>
+        <p data-aos="fade-up" data-aos-delay="200">Brisbane's trusted licensed builders since 2001. Specialized in carpentry, waterproofing, and high-end renovations.</p>
+        <a href="#contact" class="cta" data-aos="zoom-in" data-aos-delay="400">START YOUR PROJECT</a>
+    </section>
+
+    <section id="services" class="section">
+        <h2 class="section-title" data-aos="fade-down">Our Expertise</h2>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up">
+                <i data-lucide="hammer" size="40"></i>
+                <h3>Structural Carpentry</h3>
+                <p>From custom decks and pergolas to internal framing. QBCC Licensed craftsmanship that adds value to your home.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <i data-lucide="droplets" size="40"></i>
+                <h3>Certified Waterproofing</h3>
+                <p>Solving water ingress issues at the source. We don't just patch—we provide long-term structural protection.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <i data-lucide="home" size="40"></i>
+                <h3>Body Corporate Repairs</h3>
+                <p>Trusted by Brisbane’s leading property agents for complex maintenance and multi-unit projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="expert-insight" data-aos="zoom-in">
+            <div class="insight-content">
+                <h3>Expert Insight: The "Cheap Quote" Trap</h3>
+                <p>Ever wonder why the other guy's fence quote is cheaper? It usually comes down to shortcuts—shallow posts, subpar materials, and lack of licensing. Tony and the team focus on the details that ensure your investment doesn't rot or lean in three years.</p>
+                <br>
+                <p><strong>"We carry out all work like it is being done at our own place."</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="contact-container">
+            <div data-aos="fade-right">
+                <h2>Let’s Talk Shop</h2>
+                <p>Based in Bald Hills, servicing all of Brisbane. Fully insured and QBCC Licensed (15462565).</p>
+                <br>
+                <p><i data-lucide="mail"></i> tony@handeesolutions.com.au</p>
+                <p><i data-lucide="map-pin"></i> Brisbane, QLD</p>
+            </div>
+            <form data-aos="fade-left">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <textarea rows="5" placeholder="Tell us about your project..."></textarea>
+                <button type="submit" class="cta" style="border:none; cursor:pointer; width:100%;">SEND MESSAGE</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Handee Solutions Pty Ltd | ABN: 85 679 291 797 | QBCC: 15462565</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        lucide.createIcons();
+    </script>
+</body>
+</html>
