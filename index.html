@@ -3,176 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Handee Solutions | The North Brisbane Standard</title>
+    <title>Handee Solutions | North Brisbane Building & Structural Mastery</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
-            --bg: #0f110c; /* Deep Obsidian */
-            --paper: #f4f1ea; /* High-end Paper White */
-            --accent: #bda27e; /* Raw Brass */
-            --muted: #4a4e4d;
-            --transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            --paper: #f9f7f2;
+            --ink: #1a1a1a;
+            --signal: #ff4d00; /* High-visibility orange */
+            --concrete: #d1d1d1;
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: 'Outfit', sans-serif; 
+            font-family: 'Space Grotesk', sans-serif; 
             background-color: var(--paper); 
-            color: var(--bg); 
-            line-height: 1.5;
+            color: var(--ink); 
+            line-height: 1.4;
             overflow-x: hidden;
         }
 
-        h1, h2, h3 { font-weight: 800; text-transform: uppercase; letter-spacing: -0.03em; line-height: 0.9; }
-        .serif { font-family: 'Cormorant Garamond', serif; text-transform: none; font-style: italic; font-weight: 600; letter-spacing: 0; }
+        h1, h2, h3 { font-family: 'Syne', sans-serif; text-transform: uppercase; line-height: 0.85; }
 
-        /* Navigation - Floating Chic */
+        /* Navigation */
         nav { 
-            position: fixed; width: 100%; padding: 30px 5%; 
-            display: flex; justify-content: space-between; align-items: center; 
-            z-index: 1000; mix-blend-mode: difference; color: white;
+            position: fixed; width: 100%; padding: 40px 5%; 
+            display: flex; justify-content: space-between; align-items: flex-start; 
+            z-index: 1000; pointer-events: none;
         }
-        .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; }
+        .logo { font-size: 1.5rem; font-weight: 800; pointer-events: auto; letter-spacing: -1px; }
+        .nav-meta { text-align: right; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; pointer-events: auto; }
 
-        /* Hero - The Statement */
+        /* Hero */
         .hero { 
-            height: 100vh; display: flex; flex-direction: column; justify-content: center; 
-            padding: 0 10%; background: var(--bg); color: var(--paper);
-            position: relative;
+            height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; 
+            padding: 5%; background: var(--paper); position: relative;
         }
-        .hero h1 { font-size: clamp(4rem, 12vw, 9rem); margin-bottom: 20px; }
-        .hero p { font-size: 1.1rem; max-width: 500px; font-weight: 300; opacity: 0.7; letter-spacing: 1px; }
-        
-        /* The Philosophy Section */
-        .intro { padding: 150px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
-        .intro h2 { font-size: 4rem; color: var(--bg); }
-        .intro-text { font-size: 1.4rem; line-height: 1.3; font-weight: 500; }
+        .hero h1 { font-size: clamp(4rem, 18vw, 15rem); margin-bottom: -0.05em; letter-spacing: -0.04em; }
+        .hero-sub { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; }
+        .hero-desc { max-width: 400px; font-size: 1.1rem; font-weight: 500; }
 
-        /* The Capabilities - High Stylized Cards */
-        .section { padding: 100px 10%; }
-        .cap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2px; background: #ddd; border: 1px solid #ddd; }
-        .cap-card { background: var(--paper); padding: 60px 40px; transition: var(--transition); position: relative; overflow: hidden; }
-        .cap-card:hover { background: var(--bg); color: var(--paper); }
-        .cap-card h3 { font-size: 1.8rem; margin-bottom: 20px; position: relative; z-index: 2; }
-        .cap-card p { font-weight: 300; opacity: 0.8; margin-bottom: 30px; position: relative; z-index: 2; }
-        .cap-card .index { position: absolute; top: 30px; right: 30px; font-size: 0.8rem; font-weight: 800; opacity: 0.2; }
+        /* The "Core" Section */
+        .section { padding: 150px 5%; }
+        .big-text { font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 60px; max-width: 1000px; }
+        .signal-line { width: 100px; height: 10px; background: var(--signal); margin-bottom: 40px; }
 
-        /* Large Image Interlude */
-        .visual-break { height: 80vh; background: url('https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&q=80&w=2000') center/cover fixed; margin: 0 5%; border-radius: 5px; }
+        /* Capability Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1px; background: var(--concrete); border: 1px solid var(--concrete); }
+        .cell { background: var(--paper); padding: 80px 40px; transition: var(--transition); }
+        .cell:hover { background: var(--ink); color: var(--paper); }
+        .cell h3 { font-size: 2.5rem; margin-bottom: 30px; }
+        .cell p { opacity: 0.7; font-size: 1rem; max-width: 300px; margin-bottom: 40px; }
 
-        /* Contact - The Final Impression */
-        .contact { padding: 150px 10%; background: var(--bg); color: var(--paper); }
-        .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 100px; }
-        .contact h2 { font-size: 5rem; margin-bottom: 40px; }
+        /* Technical Visuals */
+        .technical-break { 
+            padding: 100px 5%; background: var(--ink); color: var(--paper);
+            display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: center;
+        }
+        .diagram-container { border: 1px solid #333; padding: 20px; text-align: center; }
+
+        /* The "Tony" Narrative - Stylized */
+        .narrative { padding: 150px 5%; background: #fff; }
+        .stagger-text { font-size: 6vw; text-transform: uppercase; font-weight: 800; line-height: 1; color: var(--concrete); }
+        .stagger-text span { color: var(--ink); }
+
+        /* Form / Contact */
+        .contact { background: var(--signal); color: var(--ink); padding: 100px 5%; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
+        .contact h2 { font-size: 8vw; color: var(--paper); }
         
         input, textarea { 
-            width: 100%; background: transparent; border: none; border-bottom: 1px solid #333; 
-            padding: 20px 0; color: white; font-family: inherit; font-size: 1.2rem; margin-bottom: 30px;
-            outline: none; transition: var(--transition);
+            width: 100%; background: transparent; border: none; border-bottom: 4px solid var(--paper); 
+            padding: 20px 0; color: var(--paper); font-family: 'Syne', sans-serif; font-size: 2rem; 
+            margin-bottom: 50px; outline: none; transition: var(--transition);
         }
-        input:focus { border-color: var(--accent); }
-        
-        .submit-btn { 
-            display: inline-block; padding: 25px 60px; background: var(--accent); color: var(--bg); 
-            text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
-            font-size: 0.9rem; transition: var(--transition);
-        }
-        .submit-btn:hover { background: var(--paper); transform: scale(1.05); }
+        ::placeholder { color: rgba(249, 247, 242, 0.4); }
+        input:focus { border-color: var(--ink); }
 
-        footer { padding: 60px 10%; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #999; }
+        footer { padding: 50px 5%; display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 700; color: #999; text-transform: uppercase; }
 
         @media (max-width: 900px) {
-            .intro, .contact-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 4rem; }
-            .intro h2 { font-size: 3rem; }
+            .contact-grid, .technical-break { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 5rem; }
+            .cell { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">HANDEE.</div>
-        <div style="font-size: 0.7rem; letter-spacing: 3px; font-weight: 800;">EST. 2001</div>
+        <div class="logo">HANDEE SOLUTIONS</div>
+        <div class="nav-meta">
+            EST. 2001<br>QBCC 15462565
+        </div>
     </nav>
 
     <section class="hero">
-        <h1 data-aos="fade-up">Building <br><span class="serif">the Standard.</span></h1>
-        <p data-aos="fade-up" data-aos-delay="200">Bespoke construction and structural solutions for Bayside & North Brisbane’s finest properties.</p>
-        <div style="position: absolute; bottom: 50px; left: 10%;" data-aos="fade-in" data-aos-delay="500">
-            <i data-lucide="arrow-down" stroke-width="1"></i>
+        <div class="hero-sub">
+            <div class="hero-desc" data-aos="fade-up">
+                Licensed Building & Structural Contractors. We solve the physics of the home before we touch the aesthetic.
+            </div>
+            <div class="nav-meta" style="text-align: left;" data-aos="fade-up" data-aos-delay="100">
+                NORTH BRISBANE<br>BAYSIDE OPERATIONS
+            </div>
         </div>
+        <h1 data-aos="fade-up" data-aos-delay="200">BUILT<br>RIGHT.</h1>
     </section>
-
-    <section class="intro">
-        <h2 data-aos="fade-right">Two Decades <br>of <span class="serif">Integrity.</span></h2>
-        <div class="intro-text" data-aos="fade-up">
-            <p>At Handee Solutions, we don’t just build; we curate. Led by Tony, our team operates at the intersection of traditional craftsmanship and modern structural science. We specialize in the details that endure.</p>
-        </div>
-    </section>
-
-    <div class="visual-break" data-aos="zoom-out"></div>
 
     <section class="section">
-        <div class="cap-grid">
-            <div class="cap-card" data-aos="fade-up">
-                <span class="index">01</span>
-                <h3>Structural <span class="serif">Carpentry</span></h3>
-                <p>From architectural decks to custom pergolas and complex framing. We build timber assets that age with grace.</p>
-            </div>
-            <div class="cap-card" data-aos="fade-up" data-aos-delay="100">
-                <span class="index">02</span>
-                <h3>Advanced <span class="serif">Waterproofing</span></h3>
-                <p>Certified protection for the core of your home. We specialize in identifying substrate failures and implementing permanent seals.</p>
-            </div>
-            <div class="cap-card" data-aos="fade-up" data-aos-delay="200">
-                <span class="index">03</span>
-                <h3>Refined <span class="serif">Renovations</span></h3>
-                <p>Complete transformation of kitchens and bathrooms. A seamless integration of luxury finishes and functional design.</p>
-            </div>
-            <div class="cap-card" data-aos="fade-up">
-                <span class="index">04</span>
-                <h3>Remedial <span class="serif">Works</span></h3>
-                <p>Specialized solutions for Body Corporate and property managers. Expert timber rot repair and structural reinforcement.</p>
-            </div>
-            <div class="cap-card" data-aos="fade-up" data-aos-delay="100">
-                <span class="index">05</span>
-                <h3>Site <span class="serif">Infrastructure</span></h3>
-                <p>Retaining walls and perimeters built with engineering precision. Stability and aesthetic in perfect alignment.</p>
-            </div>
-            <div class="cap-card" data-aos="fade-up" data-aos-delay="200">
-                <span class="index">06</span>
-                <h3>The <span class="serif">Handee Seal</span></h3>
-                <p>Licensed (QBCC 15462565) and insured. Our reputation is built on the work you see, and the structural integrity you don't.</p>
-            </div>
+        <div class="signal-line" data-aos="zoom-in-right"></div>
+        <div class="big-text" data-aos="fade-up">
+            Twenty years of <span>Integrity</span> in every substrate, every frame, and every finish. We don't just build—we reinforce.
         </div>
     </section>
 
-    <section class="contact">
+    <section class="grid">
+        <div class="cell" data-aos="fade-up">
+            <h3>Remedial <br>Carpentry</h3>
+            <p>Identifying structural fatigue and restoring integrity. From Brisbane's classic timber decks to modern architectural framing.</p>
+            <i data-lucide="hammer"></i>
+        </div>
+        <div class="cell" data-aos="fade-up" data-aos-delay="100">
+            <h3>Structural <br>Waterproofing</h3>
+            <p>Certified liquid-applied and sheet membrane systems. We specialize in identifying ingress points that others miss.</p>
+            <i data-lucide="droplets"></i>
+        </div>
+        <div class="cell" data-aos="fade-up" data-aos-delay="200">
+            <h3>Premium <br>Renovations</h3>
+            <p>Turnkey kitchen and bathroom transformations. High-end delivery managed with surgical technical precision.</p>
+            <i data-lucide="layers"></i>
+        </div>
+        <div class="cell" data-aos="fade-up">
+            <h3>Body <br>Corporate</h3>
+            <p>Trusted site management and complex multi-unit maintenance. We understand compliance, safety, and durability.</p>
+            <i data-lucide="building"></i>
+        </div>
+    </section>
+
+    <section class="technical-break">
+        <div data-aos="fade-right">
+            <h2 style="color: var(--signal); font-size: 3rem; margin-bottom: 20px;">The Anatomy of <br>Integrity</h2>
+            <p style="opacity: 0.6; font-size: 1.2rem;">While others focus on the paint, we focus on the protection. Our waterproofing and structural work follows a rigorous multi-layer protocol ensuring decades of service.</p>
+        </div>
+        <div class="diagram-container" data-aos="zoom-in">
+            
+            <p style="font-size: 0.7rem; margin-top: 10px; letter-spacing: 1px; opacity: 0.4;">TECHNICAL SPECIFICATION: 4-LAYER MEMBRANE SYSTEM</p>
+        </div>
+    </section>
+
+    <section class="narrative">
+        <div class="stagger-text" data-aos="fade-up">DO IT <span>RIGHT</span></div>
+        <div class="stagger-text" style="text-align: center;" data-aos="fade-up" data-aos-delay="100">FIRST <span>TIME</span></div>
+        <div class="stagger-text" style="text-align: right;" data-aos="fade-up" data-aos-delay="200">EVERY <span>TIME</span></div>
+    </section>
+
+    <section id="contact" class="contact">
         <div class="contact-grid">
-            <div data-aos="fade-right">
-                <h2>Ready to <br><span class="serif">Elevate?</span></h2>
-                <p style="font-size: 1.2rem; opacity: 0.6; margin-bottom: 40px;">Contact Tony today to discuss your project scope and schedule a consultation.</p>
-                <div style="font-weight: 800; letter-spacing: 1px;">
+            <div>
+                <h2 data-aos="fade-right">START<br>WORK.</h2>
+                <div style="margin-top: 40px; font-weight: 700;">
                     <p>TONY@HANDEESOLUTIONS.COM.AU</p>
-                    <p>BAYSIDE & NORTH BRISBANE OPERATIONS</p>
+                    <p>BRISBANE, QUEENSLAND</p>
                 </div>
             </div>
-            <form data-aos="fade-left">
-                <input type="text" placeholder="YOUR NAME">
-                <input type="email" placeholder="EMAIL ADDRESS">
-                <textarea rows="4" placeholder="TELL US ABOUT THE PROJECT"></textarea>
-                <button type="submit" class="submit-btn">Begin Consultation</button>
+            <form data-aos="fade-up">
+                <input type="text" placeholder="NAME">
+                <input type="email" placeholder="EMAIL">
+                <textarea rows="3" placeholder="PROJECT SCOPE"></textarea>
+                <button type="submit" style="background: var(--ink); color: var(--paper); border: none; padding: 30px 60px; font-family: 'Syne', sans-serif; font-weight: 800; cursor: pointer; text-transform: uppercase; width: 100%;">Initiate Project</button>
             </form>
         </div>
     </section>
 
     <footer>
         <div>© 2026 HANDEE SOLUTIONS PTY LTD</div>
-        <div>QBCC 15462565 | ABN 85 679 291 797</div>
+        <div>ABN: 85 679 291 797 | BAYSIDE & NORTH BRISBANE</div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
