@@ -3,219 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Handee Solutions | Brighton & North Brisbane Licensed Builders</title>
+    <title>Handee Solutions | The North Brisbane Standard</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
-            --primary-navy: #1a2e44;
-            --accent-gold: #c5a059;
-            --coastal-white: #f8fafd;
-            --sand: #e8e2d6;
-            --text-dark: #2d3436;
-            --transition: all 0.3s ease-in-out;
+            --bg: #0f110c; /* Deep Obsidian */
+            --paper: #f4f1ea; /* High-end Paper White */
+            --accent: #bda27e; /* Raw Brass */
+            --muted: #4a4e4d;
+            --transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: var(--coastal-white); 
-            color: var(--text-dark); 
-            line-height: 1.8;
+            font-family: 'Outfit', sans-serif; 
+            background-color: var(--paper); 
+            color: var(--bg); 
+            line-height: 1.5;
             overflow-x: hidden;
         }
 
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 900; color: var(--primary-navy); text-transform: uppercase; letter-spacing: 1px; }
-        .italic { font-family: 'Playfair Display', serif; font-style: italic; text-transform: none; font-weight: 700; }
+        h1, h2, h3 { font-weight: 800; text-transform: uppercase; letter-spacing: -0.03em; line-height: 0.9; }
+        .serif { font-family: 'Cormorant Garamond', serif; text-transform: none; font-style: italic; font-weight: 600; letter-spacing: 0; }
 
-        /* Navigation */
+        /* Navigation - Floating Chic */
         nav { 
-            position: fixed; width: 100%; padding: 15px 5%; 
+            position: fixed; width: 100%; padding: 30px 5%; 
             display: flex; justify-content: space-between; align-items: center; 
-            z-index: 1000; background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(5px); border-bottom: 2px solid var(--sand);
+            z-index: 1000; mix-blend-mode: difference; color: white;
         }
-        .logo { font-size: 1.2rem; font-weight: 900; color: var(--primary-navy); }
-        .logo span { color: var(--accent-gold); }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { color: var(--primary-navy); text-decoration: none; font-size: 0.8rem; font-weight: 700; transition: var(--transition); }
-        .nav-links a:hover { color: var(--accent-gold); }
+        .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; }
 
-        /* Hero - The Sunny Brisbane Look */
+        /* Hero - The Statement */
         .hero { 
-            height: 90vh; display: flex; align-items: center; 
-            background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.4)), 
-            url('https://images.unsplash.com/photo-1513584684374-8bdb7489feef?auto=format&fit=crop&q=80&w=2000') center/cover; 
-            padding: 0 10%;
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; 
+            padding: 0 10%; background: var(--bg); color: var(--paper);
+            position: relative;
         }
-        .hero-content { max-width: 700px; }
-        .hero h1 { font-size: 4.5rem; line-height: 0.9; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; color: #444; margin-bottom: 30px; font-weight: 500; }
-
-        .btn { 
-            display: inline-block; padding: 18px 35px; border-radius: 4px; 
-            text-decoration: none; font-weight: 700; text-transform: uppercase; 
-            transition: var(--transition); font-size: 0.9rem;
-        }
-        .btn-primary { background: var(--primary-navy); color: white; }
-        .btn-primary:hover { background: var(--accent-gold); transform: translateY(-3px); }
-
-        /* Content Sections */
-        .section { padding: 120px 10%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .hero h1 { font-size: clamp(4rem, 12vw, 9rem); margin-bottom: 20px; }
+        .hero p { font-size: 1.1rem; max-width: 500px; font-weight: 300; opacity: 0.7; letter-spacing: 1px; }
         
-        /* Service Cards */
-        .card { 
-            background: white; padding: 50px; border-radius: 8px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05); border-bottom: 4px solid transparent; 
-            transition: var(--transition); 
+        /* The Philosophy Section */
+        .intro { padding: 150px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
+        .intro h2 { font-size: 4rem; color: var(--bg); }
+        .intro-text { font-size: 1.4rem; line-height: 1.3; font-weight: 500; }
+
+        /* The Capabilities - High Stylized Cards */
+        .section { padding: 100px 10%; }
+        .cap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2px; background: #ddd; border: 1px solid #ddd; }
+        .cap-card { background: var(--paper); padding: 60px 40px; transition: var(--transition); position: relative; overflow: hidden; }
+        .cap-card:hover { background: var(--bg); color: var(--paper); }
+        .cap-card h3 { font-size: 1.8rem; margin-bottom: 20px; position: relative; z-index: 2; }
+        .cap-card p { font-weight: 300; opacity: 0.8; margin-bottom: 30px; position: relative; z-index: 2; }
+        .cap-card .index { position: absolute; top: 30px; right: 30px; font-size: 0.8rem; font-weight: 800; opacity: 0.2; }
+
+        /* Large Image Interlude */
+        .visual-break { height: 80vh; background: url('https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&q=80&w=2000') center/cover fixed; margin: 0 5%; border-radius: 5px; }
+
+        /* Contact - The Final Impression */
+        .contact { padding: 150px 10%; background: var(--bg); color: var(--paper); }
+        .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 100px; }
+        .contact h2 { font-size: 5rem; margin-bottom: 40px; }
+        
+        input, textarea { 
+            width: 100%; background: transparent; border: none; border-bottom: 1px solid #333; 
+            padding: 20px 0; color: white; font-family: inherit; font-size: 1.2rem; margin-bottom: 30px;
+            outline: none; transition: var(--transition);
         }
-        .card:hover { border-bottom: 4px solid var(--accent-gold); transform: translateY(-10px); }
-        .card i { color: var(--accent-gold); margin-bottom: 25px; }
-        .card h3 { margin-bottom: 15px; font-size: 1.2rem; }
-
-        /* The "Expert Insight" Section */
-        .insight-box { 
-            background: var(--primary-navy); color: white; padding: 80px; 
-            border-radius: 20px; position: relative; overflow: hidden;
+        input:focus { border-color: var(--accent); }
+        
+        .submit-btn { 
+            display: inline-block; padding: 25px 60px; background: var(--accent); color: var(--bg); 
+            text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+            font-size: 0.9rem; transition: var(--transition);
         }
-        .insight-box h2 { color: white; margin-bottom: 20px; }
-        .insight-box p { color: #cbd5e0; }
-        .insight-box::after {
-            content: "HANDEE"; position: absolute; bottom: -20px; right: -20px;
-            font-size: 10rem; font-weight: 900; opacity: 0.03;
-        }
+        .submit-btn:hover { background: var(--paper); transform: scale(1.05); }
 
-        /* Portfolio/About Stubs */
-        .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
-        .about-image { width: 100%; border-radius: 12px; box-shadow: 20px 20px 0 var(--sand); }
+        footer { padding: 60px 10%; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #999; }
 
-        /* Footer */
-        footer { background: #111; color: white; padding: 80px 10% 40px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 60px; }
-        .license-badge { border: 1px solid #333; padding: 15px; border-radius: 4px; font-size: 0.7rem; color: #888; }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .about-grid { grid-template-columns: 1fr; }
-            nav { padding: 15px 20px; }
-            .nav-links { display: none; }
+        @media (max-width: 900px) {
+            .intro, .contact-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 4rem; }
+            .intro h2 { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">HANDEE <span>SOLUTIONS</span></div>
-        <div class="nav-links">
-            <a href="#services">Specialties</a>
-            <a href="#about">The Tony Method</a>
-            <a href="#contact">Get a Quote</a>
-        </div>
+        <div class="logo">HANDEE.</div>
+        <div style="font-size: 0.7rem; letter-spacing: 3px; font-weight: 800;">EST. 2001</div>
     </nav>
 
     <section class="hero">
-        <div class="hero-content">
-            <h4 data-aos="fade-right" style="color: var(--accent-gold); font-weight: 700; margin-bottom: 10px;">BRIGHTON'S TRUSTED CARPENTERS</h4>
-            <h1 data-aos="fade-up" data-aos-delay="100">Quality Built <br><span class="italic">for the Coast.</span></h1>
-            <p data-aos="fade-up" data-aos-delay="200">QBCC Licensed builders specializing in renovations, decks, and certified waterproofing. Since 2001, we've built our reputation on doing it right the first time.</p>
-            <div data-aos="fade-up" data-aos-delay="300">
-                <a href="#contact" class="btn btn-primary">Start Your Renovation</a>
-            </div>
+        <h1 data-aos="fade-up">Building <br><span class="serif">the Standard.</span></h1>
+        <p data-aos="fade-up" data-aos-delay="200">Bespoke construction and structural solutions for Bayside & North Brisbane’s finest properties.</p>
+        <div style="position: absolute; bottom: 50px; left: 10%;" data-aos="fade-in" data-aos-delay="500">
+            <i data-lucide="arrow-down" stroke-width="1"></i>
         </div>
     </section>
 
-    <section id="services" class="section">
-        <div style="text-align: center; margin-bottom: 80px;">
-            <h2 data-aos="fade-up">Professional <span class="italic">Craftsmanship</span></h2>
-            <p>Master carpenters focused on structural integrity and premium finishes.</p>
-        </div>
-        <div class="grid">
-            <div class="card" data-aos="fade-up">
-                <i data-lucide="palette" size="40"></i>
-                <h3>Renovations</h3>
-                <p>Complete kitchen and bathroom makeovers. We manage the complexity so you just enjoy the result.</p>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <i data-lucide="waves" size="40"></i>
-                <h3>Waterproofing</h3>
-                <p>Don't just fix the leak—solve the source. Certified waterproofing to protect your home’s future.</p>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <i data-lucide="trees" size="40"></i>
-                <h3>Outdoor Living</h3>
-                <p>Timber decks, pergolas, and retaining walls designed to withstand the North Brisbane sun.</p>
-            </div>
+    <section class="intro">
+        <h2 data-aos="fade-right">Two Decades <br>of <span class="serif">Integrity.</span></h2>
+        <div class="intro-text" data-aos="fade-up">
+            <p>At Handee Solutions, we don’t just build; we curate. Led by Tony, our team operates at the intersection of traditional craftsmanship and modern structural science. We specialize in the details that endure.</p>
         </div>
     </section>
 
-    <section id="about" class="section" style="background: var(--sand);">
-        <div class="about-grid">
-            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1000" alt="Tony at Work" class="about-image" data-aos="zoom-in">
-            <div data-aos="fade-left">
-                <h2 style="margin-bottom: 20px;">Built by <span class="italic">Tony</span></h2>
-                <p>Tony has been a licensed contractor since 2001, serving Brighton and the surrounding Brisbane suburbs. As a family-owned business, we don't believe in "cheap fixes."</p>
-                <br>
-                <p><strong>The Handee Difference:</strong> We treat every home as if it were our own. Whether it's the depth of a fence post or the seal on a bathroom floor, the details you <em>can't</em> see are the ones that matter most.</p>
-                <br>
-                <ul style="list-style: none;">
-                    <li><i data-lucide="check-circle" size="18" style="color:var(--accent-gold)"></i> QBCC Licensed & Fully Insured</li>
-                    <li><i data-lucide="check-circle" size="18" style="color:var(--accent-gold)"></i> Brighton Resident & Local Expert</li>
-                    <li><i data-lucide="check-circle" size="18" style="color:var(--accent-gold)"></i> Over 20 Years Experience</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <div class="visual-break" data-aos="zoom-out"></div>
 
     <section class="section">
-        <div class="insight-box" data-aos="flip-up">
-            <h2>The "Fence Quote" Trap</h2>
-            <p>Why is the other guy’s quote $500 cheaper? Usually, it's the <strong>depth of the posts</strong>. Many builders cut corners by digging shallow, meaning your fence will lean within two years. At Handee Solutions, we dig to the proper depth, use superior concrete, and ensure your investment stands straight for decades. Quality isn't just about how it looks on day one.</p>
+        <div class="cap-grid">
+            <div class="cap-card" data-aos="fade-up">
+                <span class="index">01</span>
+                <h3>Structural <span class="serif">Carpentry</span></h3>
+                <p>From architectural decks to custom pergolas and complex framing. We build timber assets that age with grace.</p>
+            </div>
+            <div class="cap-card" data-aos="fade-up" data-aos-delay="100">
+                <span class="index">02</span>
+                <h3>Advanced <span class="serif">Waterproofing</span></h3>
+                <p>Certified protection for the core of your home. We specialize in identifying substrate failures and implementing permanent seals.</p>
+            </div>
+            <div class="cap-card" data-aos="fade-up" data-aos-delay="200">
+                <span class="index">03</span>
+                <h3>Refined <span class="serif">Renovations</span></h3>
+                <p>Complete transformation of kitchens and bathrooms. A seamless integration of luxury finishes and functional design.</p>
+            </div>
+            <div class="cap-card" data-aos="fade-up">
+                <span class="index">04</span>
+                <h3>Remedial <span class="serif">Works</span></h3>
+                <p>Specialized solutions for Body Corporate and property managers. Expert timber rot repair and structural reinforcement.</p>
+            </div>
+            <div class="cap-card" data-aos="fade-up" data-aos-delay="100">
+                <span class="index">05</span>
+                <h3>Site <span class="serif">Infrastructure</span></h3>
+                <p>Retaining walls and perimeters built with engineering precision. Stability and aesthetic in perfect alignment.</p>
+            </div>
+            <div class="cap-card" data-aos="fade-up" data-aos-delay="200">
+                <span class="index">06</span>
+                <h3>The <span class="serif">Handee Seal</span></h3>
+                <p>Licensed (QBCC 15462565) and insured. Our reputation is built on the work you see, and the structural integrity you don't.</p>
+            </div>
         </div>
     </section>
 
-    <section id="contact" class="section">
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <h2 style="font-size: 3rem; margin-bottom: 20px;">Ready to <span class="italic">start?</span></h2>
-            <p>Contact Tony today for an honest, transparent quote on your next building project.</p>
-            <br><br>
-            <div class="grid" style="text-align: left;">
-                <div>
-                    <h4 style="margin-bottom: 10px;">Direct Contact</h4>
-                    <p><i data-lucide="phone" size="16"></i> 0400 000 000</p>
-                    <p><i data-lucide="mail" size="16"></i> tony@handeesolutions.com.au</p>
-                    <p><i data-lucide="map-pin" size="16"></i> Brighton, QLD 4017</p>
+    <section class="contact">
+        <div class="contact-grid">
+            <div data-aos="fade-right">
+                <h2>Ready to <br><span class="serif">Elevate?</span></h2>
+                <p style="font-size: 1.2rem; opacity: 0.6; margin-bottom: 40px;">Contact Tony today to discuss your project scope and schedule a consultation.</p>
+                <div style="font-weight: 800; letter-spacing: 1px;">
+                    <p>TONY@HANDEESOLUTIONS.COM.AU</p>
+                    <p>BAYSIDE & NORTH BRISBANE OPERATIONS</p>
                 </div>
-                <form>
-                    <input type="text" placeholder="Name" style="width:100%; padding:15px; margin-bottom:15px; border:1px solid #ddd;">
-                    <textarea placeholder="Tell us about your project" style="width:100%; padding:15px; margin-bottom:15px; border:1px solid #ddd; height: 100px;"></textarea>
-                    <button class="btn btn-primary" style="width:100%; border:none; cursor:pointer;">Request Free Consultation</button>
-                </form>
             </div>
+            <form data-aos="fade-left">
+                <input type="text" placeholder="YOUR NAME">
+                <input type="email" placeholder="EMAIL ADDRESS">
+                <textarea rows="4" placeholder="TELL US ABOUT THE PROJECT"></textarea>
+                <button type="submit" class="submit-btn">Begin Consultation</button>
+            </form>
         </div>
     </section>
 
     <footer>
-        <div class="footer-grid">
-            <div>
-                <h3>HANDEE</h3>
-                <p style="font-size: 0.8rem; color: #666;">Licensed Master Builders servicing Brighton, Sandgate, Shorncliffe, and North Brisbane.</p>
-            </div>
-            <div class="license-badge">
-                <strong>QBCC License: 15462565</strong><br>
-                ABN: 85 679 291 797<br>
-                Public Liability Insured
-            </div>
-        </div>
-        <p style="font-size: 0.7rem; color: #444; border-top: 1px solid #222; padding-top: 20px;">&copy; 2026 Handee Solutions. All Rights Reserved. Built with pride in Brighton.</p>
+        <div>© 2026 HANDEE SOLUTIONS PTY LTD</div>
+        <div>QBCC 15462565 | ABN 85 679 291 797</div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        AOS.init({ duration: 1000, once: true });
         lucide.createIcons();
     </script>
 </body>
