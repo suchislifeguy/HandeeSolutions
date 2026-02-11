@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Handee Solutions | Licensed Builders & Contractors | Brisbane QLD</title>
-    <meta name="description" content="Get everything done in one place – we do it all! With over 25 years’ experience, we work with you to understand your needs and deliver high quality results in an efficient and cost-effective way. Our workers each hold a White Card and Blue Card.
-
-">
+    <meta name="description" content="Licensed Builders and Contractors serving all areas of Brisbane. 25+ years experience in remedial carpentry, structural waterproofing, renovations & body corporate maintenance.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,15 +12,19 @@
     
     <style>
         :root {
-            --primary: #E8E8E8;
-            --secondary: #1A1A1A;
-            --accent: #FF4C00;
-            --accent-dim: #CC3D00;
-            --surface: #2A2A2A;
-            --surface-light: #353535;
-            --text: #E8E8E8;
-            --text-dim: #A8A8A8;
-            --grid: rgba(232, 232, 232, 0.08);
+            --primary: #2C3E2E;
+            --secondary: #F9F6F1;
+            --accent: #D97642;
+            --accent-dim: #B85F35;
+            --sage: #8BA888;
+            --sage-light: #B8CDB5;
+            --terracotta: #C85C3C;
+            --sand: #E8DCC8;
+            --cream: #FFF9F0;
+            --forest: #3D5340;
+            --golden: #E6A24A;
+            --text: #2C3E2E;
+            --text-dim: #6B7C6E;
         }
         
         * {
@@ -39,7 +41,7 @@
             overflow-x: hidden;
         }
         
-        /* Technical Grid Background */
+        /* Organic garden-inspired background */
         body::before {
             content: '';
             position: fixed;
@@ -47,13 +49,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                linear-gradient(var(--grid) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-            background-size: 40px 40px;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(139, 168, 136, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(230, 162, 74, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(217, 118, 66, 0.04) 0%, transparent 60%);
             pointer-events: none;
             z-index: 0;
-            opacity: 0.5;
         }
         
         .container {
@@ -70,9 +71,9 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(26, 26, 26, 0.95);
+            background: rgba(249, 246, 241, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--surface);
+            border-bottom: 1px solid rgba(139, 168, 136, 0.2);
             z-index: 1000;
             animation: slideDown 0.6s ease-out;
         }
@@ -100,7 +101,7 @@
             font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: 0.05em;
-            color: var(--primary);
+            color: var(--forest);
         }
         
         .nav-links {
@@ -127,12 +128,12 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            background: var(--terracotta);
             transition: width 0.3s ease;
         }
         
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--terracotta);
         }
         
         .nav-links a:hover::after {
@@ -146,42 +147,59 @@
             align-items: center;
             position: relative;
             padding-top: 100px;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--sand) 100%);
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50%;
+            height: 60%;
+            background: radial-gradient(circle at center, rgba(139, 168, 136, 0.15) 0%, transparent 70%);
+            pointer-events: none;
         }
         
         .hero-content {
-            max-width: 900px;
+            max-width: 800px;
         }
         
         .hero-label {
             font-family: 'Space Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--accent);
+            font-size: 0.9rem;
+            color: var(--terracotta);
             letter-spacing: 0.15em;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             animation: fadeIn 0.8s ease-out 0.2s both;
+            text-transform: uppercase;
         }
         
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 7rem);
+            font-size: clamp(2.5rem, 6vw, 5rem);
             font-weight: 700;
-            line-height: 0.95;
+            line-height: 1.2;
             margin-bottom: 1.5rem;
             letter-spacing: -0.02em;
             animation: fadeIn 0.8s ease-out 0.4s both;
+            color: var(--forest);
         }
         
         .hero-subtitle {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--text-dim);
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
             animation: fadeIn 0.8s ease-out 0.6s both;
+            max-width: 650px;
         }
         
         .hero-meta {
             display: flex;
             gap: 2rem;
+            flex-wrap: wrap;
             font-family: 'Space Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-dim);
             margin-bottom: 3rem;
             animation: fadeIn 0.8s ease-out 0.8s both;
@@ -191,11 +209,15 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(139, 168, 136, 0.1);
+            border-radius: 4px;
         }
         
         .hero-meta span::before {
-            content: '■';
-            color: var(--accent);
+            content: '✓';
+            color: var(--sage);
+            font-weight: bold;
         }
         
         @keyframes fadeIn {
@@ -212,18 +234,19 @@
         .cta-primary {
             display: inline-block;
             padding: 1.2rem 3rem;
-            background: var(--accent);
-            color: var(--secondary);
+            background: var(--terracotta);
+            color: var(--cream);
             text-decoration: none;
             font-weight: 700;
             font-size: 1rem;
             letter-spacing: 0.05em;
             text-transform: uppercase;
             transition: all 0.3s ease;
-            border: 2px solid var(--accent);
+            border: 2px solid var(--terracotta);
             animation: fadeIn 0.8s ease-out 1s both;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(200, 92, 60, 0.2);
         }
         
         .cta-primary::before {
@@ -247,7 +270,8 @@
         }
         
         .cta-primary:hover {
-            transform: translateX(5px);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(200, 92, 60, 0.3);
         }
         
         /* Section Headers */
@@ -260,7 +284,7 @@
         .section-label {
             font-family: 'Space Mono', monospace;
             font-size: 0.85rem;
-            color: var(--accent);
+            color: var(--terracotta);
             letter-spacing: 0.15em;
             margin-bottom: 1rem;
             text-transform: uppercase;
@@ -270,6 +294,7 @@
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
             letter-spacing: -0.02em;
+            color: var(--forest);
         }
         
         .section-header p {
@@ -279,10 +304,88 @@
             margin: 1.5rem auto 0;
         }
         
+        /* About Section */
+        .about {
+            padding: 8rem 0;
+            background: var(--cream);
+            position: relative;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--sage-light), transparent);
+        }
+        
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .about-content h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--forest);
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .about-text {
+            font-size: 1.2rem;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .about-highlight {
+            background: rgba(139, 168, 136, 0.15);
+            border-left: 4px solid var(--sage);
+            padding: 2rem;
+            margin: 3rem 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--forest);
+            line-height: 1.6;
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(44, 62, 46, 0.05);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--terracotta);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
         /* Services Section */
         .services {
             padding: 8rem 0;
-            background: linear-gradient(180deg, var(--secondary) 0%, var(--surface) 100%);
+            background: var(--secondary);
         }
         
         .services-grid {
@@ -292,12 +395,14 @@
         }
         
         .service-card {
-            background: var(--surface-light);
+            background: white;
             padding: 3rem 2rem;
-            border: 1px solid rgba(232, 232, 232, 0.1);
+            border: 1px solid rgba(139, 168, 136, 0.2);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(44, 62, 46, 0.05);
         }
         
         .service-card::before {
@@ -306,8 +411,8 @@
             top: 0;
             left: -100%;
             width: 100%;
-            height: 3px;
-            background: var(--accent);
+            height: 4px;
+            background: linear-gradient(90deg, var(--sage), var(--terracotta));
             transition: left 0.4s ease;
         }
         
@@ -317,13 +422,12 @@
         
         .service-card:hover {
             transform: translateY(-5px);
-            border-color: var(--accent);
+            box-shadow: 0 8px 25px rgba(200, 92, 60, 0.15);
         }
         
         .service-icon {
             font-size: 3rem;
             margin-bottom: 1.5rem;
-            color: var(--accent);
         }
         
         .service-card h3 {
@@ -331,6 +435,7 @@
             font-weight: 700;
             margin-bottom: 1rem;
             letter-spacing: -0.01em;
+            color: var(--forest);
         }
         
         .service-card p {
@@ -341,7 +446,7 @@
         /* Integrity Section */
         .integrity {
             padding: 8rem 0;
-            background: var(--secondary);
+            background: linear-gradient(135deg, var(--sand) 0%, var(--cream) 100%);
         }
         
         .integrity-content {
@@ -356,26 +461,29 @@
             font-weight: 700;
             margin-bottom: 2rem;
             letter-spacing: -0.02em;
+            color: var(--forest);
         }
         
         .integrity-text p {
             font-size: 1.2rem;
-            color: var(--text-dim);
+            color: var(--text);
             margin-bottom: 2rem;
             line-height: 1.8;
         }
         
         .spec-box {
-            background: var(--surface-light);
-            border: 2px solid var(--accent);
+            background: white;
+            border: 3px solid var(--sage);
             padding: 2rem;
             margin-top: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(139, 168, 136, 0.1);
         }
         
         .spec-box-label {
             font-family: 'Space Mono', monospace;
             font-size: 0.85rem;
-            color: var(--accent);
+            color: var(--terracotta);
             letter-spacing: 0.15em;
             margin-bottom: 1rem;
         }
@@ -383,6 +491,7 @@
         .spec-box h3 {
             font-size: 1.5rem;
             font-weight: 700;
+            color: var(--forest);
         }
         
         .principles {
@@ -391,25 +500,28 @@
         }
         
         .principle {
-            background: var(--surface-light);
+            background: white;
             padding: 2rem;
-            border-left: 3px solid var(--accent);
+            border-left: 4px solid var(--terracotta);
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(44, 62, 46, 0.05);
         }
         
         .principle h4 {
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            color: var(--forest);
         }
         
         .principle p {
-            color: var(--text-dim);
+            color: var(--text);
         }
         
         /* Testimonials */
         .testimonials {
             padding: 8rem 0;
-            background: linear-gradient(180deg, var(--secondary) 0%, var(--surface) 100%);
+            background: var(--secondary);
         }
         
         .testimonials-grid {
@@ -419,10 +531,18 @@
         }
         
         .testimonial-card {
-            background: var(--surface-light);
+            background: white;
             padding: 2.5rem;
-            border-left: 3px solid var(--accent);
+            border-left: 4px solid var(--golden);
             position: relative;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(44, 62, 46, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(230, 162, 74, 0.15);
         }
         
         .testimonial-quote {
@@ -436,6 +556,7 @@
             font-weight: 700;
             font-size: 1.1rem;
             margin-bottom: 0.3rem;
+            color: var(--forest);
         }
         
         .testimonial-role {
@@ -446,7 +567,7 @@
         /* Contact Section */
         .contact {
             padding: 8rem 0;
-            background: var(--secondary);
+            background: linear-gradient(135deg, var(--cream) 0%, var(--sand) 100%);
         }
         
         .contact-grid {
@@ -460,6 +581,7 @@
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700;
             margin-bottom: 2rem;
+            color: var(--forest);
         }
         
         .contact-details {
@@ -476,7 +598,6 @@
         
         .contact-icon {
             font-size: 1.5rem;
-            color: var(--accent);
             margin-top: 0.2rem;
         }
         
@@ -484,22 +605,25 @@
             font-weight: 700;
             margin-bottom: 0.3rem;
             font-size: 1.1rem;
+            color: var(--forest);
         }
         
         .contact-item-content a {
-            color: var(--text-dim);
+            color: var(--text);
             text-decoration: none;
             transition: color 0.3s ease;
         }
         
         .contact-item-content a:hover {
-            color: var(--accent);
+            color: var(--terracotta);
         }
         
         .contact-form {
-            background: var(--surface-light);
+            background: white;
             padding: 3rem;
-            border: 1px solid rgba(232, 232, 232, 0.1);
+            border: 1px solid rgba(139, 168, 136, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(44, 62, 46, 0.08);
         }
         
         .form-group {
@@ -513,24 +637,27 @@
             font-size: 0.95rem;
             letter-spacing: 0.05em;
             text-transform: uppercase;
+            color: var(--forest);
         }
         
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 1rem;
-            background: var(--surface);
-            border: 1px solid rgba(232, 232, 232, 0.2);
+            background: var(--cream);
+            border: 1px solid rgba(139, 168, 136, 0.3);
             color: var(--text);
             font-family: 'Rajdhani', sans-serif;
             font-size: 1rem;
             transition: all 0.3s ease;
+            border-radius: 4px;
         }
         
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--accent);
+            border-color: var(--sage);
+            background: white;
         }
         
         .form-group textarea {
@@ -541,8 +668,8 @@
         .submit-btn {
             width: 100%;
             padding: 1.2rem;
-            background: var(--accent);
-            color: var(--secondary);
+            background: var(--terracotta);
+            color: var(--cream);
             border: none;
             font-family: 'Rajdhani', sans-serif;
             font-size: 1rem;
@@ -551,18 +678,21 @@
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(200, 92, 60, 0.2);
         }
         
         .submit-btn:hover {
             background: var(--accent-dim);
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(200, 92, 60, 0.3);
         }
         
         /* Footer */
         footer {
-            background: var(--surface);
+            background: var(--forest);
             padding: 3rem 0;
-            border-top: 1px solid rgba(232, 232, 232, 0.1);
+            border-top: 1px solid rgba(139, 168, 136, 0.3);
         }
         
         .footer-content {
@@ -584,17 +714,18 @@
             font-size: 1.3rem;
             font-weight: 700;
             letter-spacing: 0.05em;
+            color: var(--sand);
         }
         
         .footer-credentials {
             font-family: 'Space Mono', monospace;
             font-size: 0.85rem;
-            color: var(--text-dim);
+            color: var(--sage-light);
         }
         
         .footer-right {
             text-align: right;
-            color: var(--text-dim);
+            color: var(--sage-light);
             font-size: 0.9rem;
         }
         
@@ -656,7 +787,7 @@
             display: none;
             background: none;
             border: none;
-            color: var(--text);
+            color: var(--forest);
             font-size: 1.5rem;
             cursor: pointer;
         }
@@ -671,12 +802,13 @@
                 top: 80px;
                 left: 0;
                 width: 100%;
-                background: rgba(26, 26, 26, 0.98);
+                background: rgba(249, 246, 241, 0.98);
                 backdrop-filter: blur(10px);
                 flex-direction: column;
                 padding: 2rem;
                 gap: 1.5rem;
                 display: none;
+                border-bottom: 1px solid rgba(139, 168, 136, 0.2);
             }
             
             .nav-links.active {
@@ -691,6 +823,7 @@
             <div class="logo">HANDEE SOLUTIONS</div>
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#integrity">Our Work</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
@@ -703,15 +836,47 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <div class="hero-label">EST. 2001 | QBCC 15462565</div>
-                    <h1>BUILT RIGHT.</h1>
-                    <p class="hero-subtitle">Licensed Building & Structural Contractors. We solve the physics of the home before we touch the aesthetic.</p>
+                    <div class="hero-label">Licensed Builders & Contractors • Est. 2001</div>
+                    <h1>Maintaining Brisbane<br>with Integrity</h1>
+                    <p class="hero-subtitle">With over 25 years of expertise, we deliver dependable solutions for Brisbane’s carpentry, waterproofing, and renovation needs, specializing in comprehensive body corporate maintenance.</p>
                     <div class="hero-meta">
+                        <span>QBCC Licensed 15462565</span>
                         <span>25+ Years Experience</span>
-                        <span>North Brisbane & Bayside</span>
-                        <span>White Card & Blue Card</span>
+                        <span>White & Blue Card Holders</span>
                     </div>
-                    <a href="#contact" class="cta-primary"><span>Initiate Project</span></a>
+                    <a href="#contact" class="cta-primary"><span>Start Your Project</span></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2>Built on a Foundation of Trust</h2>
+                    <p class="about-text">Since 2001, Handee Solutions has been North Brisbane and Bayside's trusted partner for building and structural work. We're not just licensed contractors—we're problem solvers who understand that quality construction starts with addressing what you can't see.</p>
+                    
+                    <p class="about-text">Our team approaches every project with the same philosophy: solve the physics first, perfect the aesthetic second. Whether it's identifying hidden water ingress, restoring structural integrity to timber frames, or delivering a premium kitchen renovation, we bring surgical precision to every detail.</p>
+                    
+                    <div class="about-highlight">
+                        "We treat every job as if we were working on our own home—with efficiency, respect, and a commitment to leaving work areas cleaner than we found them."
+                    </div>
+                    
+                    <p class="about-text">From body corporate maintenance to NDIS home modifications, from remedial carpentry to complete renovations, we've built our reputation on doing it right the first time. Every team member holds current White Cards and Blue Cards, and we maintain full QBCC licensing with comprehensive insurance coverage.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">25+</span>
+                            <span class="stat-label">Years Serving Brisbane</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Licensed & Insured</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1000s</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -854,7 +1019,7 @@
                                 <div class="contact-icon">📧</div>
                                 <div class="contact-item-content">
                                     <h4>Email</h4>
-                                    <a href="mailto:tony@handeesolutions.com.au">tony@handeesolutions.com.au</a>
+                                    <a href="/cdn-cgi/l/email-protection#30445f5e497058515e545555435f5c4544595f5e431e535f5d1e5145"><span class="__cf_email__" data-cfemail="790d161700391118171d1c1c0a16150c0d1016170a571a161457180c">[email&#160;protected]</span></a>
                                 </div>
                             </div>
                             
@@ -915,13 +1080,13 @@
                 </div>
                 <div class="footer-right">
                     <p>© 2026 Handee Solutions Pty Ltd</p>
-                    <p>Licensed Builders</p>
+                    <p>Licensed Building & Structural Contractors</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
@@ -939,14 +1104,3 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
