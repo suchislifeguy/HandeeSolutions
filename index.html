@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Handee Solutions | Licensed Builders & Contractors | Brisbane QLD</title>
-    <meta name="description" content="Licensed Builders and Contractors serving all areas of Brisbane and Moreton Bay. 25+ years experience in remedial carpentry, structural waterproofing, renovations & body corporate maintenance.">
+    <title>Handee Solutions | Licensed Building & Structural Contractors | Brisbane QLD</title>
+    <meta name="description" content="Licensed Building & Structural Contractors serving North Brisbane & Bayside. 25+ years experience in remedial carpentry, structural waterproofing, renovations & body corporate maintenance.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,11 +97,33 @@
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo-image {
+            height: 50px;
+            width: auto;
+        }
+        
+        .logo-text {
             font-family: 'Space Mono', monospace;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             letter-spacing: 0.05em;
             color: var(--forest);
+            line-height: 1.2;
+        }
+        
+        @media (max-width: 640px) {
+            .logo-text {
+                display: none;
+            }
+            
+            .logo-image {
+                height: 40px;
+            }
         }
         
         .nav-links {
@@ -380,6 +402,81 @@
             color: var(--text-dim);
             text-transform: uppercase;
             letter-spacing: 0.05em;
+        }
+        
+        /* Founder Section */
+        .founder-section {
+            margin-top: 5rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(139, 168, 136, 0.2);
+        }
+        
+        .founder-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .founder-image-wrapper {
+            position: relative;
+        }
+        
+        .founder-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(44, 62, 46, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .founder-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .founder-image-border {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid var(--sage);
+            border-radius: 8px;
+            z-index: -1;
+        }
+        
+        .founder-text h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+        
+        .founder-title {
+            font-size: 1.1rem;
+            color: var(--terracotta);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .founder-bio {
+            font-size: 1.1rem;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .founder-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .founder-image-wrapper {
+                max-width: 300px;
+                margin: 0 auto;
+            }
         }
         
         /* Services Section */
@@ -820,7 +917,10 @@
 <body>
     <header>
         <nav>
-            <div class="logo">HANDEE SOLUTIONS PTY LTD</div>
+            <div class="logo">
+                <img src="https://handeesolutions.com.au/wp-content/uploads/2025/01/cropped-HS-PTY-LTD-LOGO.jpg" alt="Handee Solutions Logo" class="logo-image">
+                <span class="logo-text">HANDEE SOLUTIONS</span>
+            </div>
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">About</a></li>
@@ -836,10 +936,9 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <div class="hero-label">Licensed Builders & Contractors • Est. 2001</div>
-                    <h1>Servicing Brisbane &<br></h1>
-                    <h1>Moreton Bay<br></h1>
-                    <p class="hero-subtitle">With over 25 years of expertise, we deliver dependable solutions for Brisbane and surrounding areas carpentry, waterproofing, and renovation needs, specializing in comprehensive body corporate maintenance.</p>
+                    <div class="hero-label">Licensed Building & Structural Contractors • Est. 2001</div>
+                    <h1>Building Brisbane<br>with Integrity</h1>
+                    <p class="hero-subtitle">For over 25 years, we've been trusted to solve the structural challenges before perfecting the finish. Every frame, every substrate, every detail—built to last.</p>
                     <div class="hero-meta">
                         <span>QBCC Licensed 15462565</span>
                         <span>25+ Years Experience</span>
@@ -876,6 +975,22 @@
                         <div class="stat-item">
                             <span class="stat-number">1000s</span>
                             <span class="stat-label">Projects Completed</span>
+                        </div>
+                    </div>
+                    
+                    <div class="founder-section">
+                        <div class="founder-content">
+                            <div class="founder-image-wrapper">
+                                <div class="founder-image-border"></div>
+                                <img src="https://handeesolutions.com.au/wp-content/uploads/2022/05/Tony-Sumpton-1-300x272.jpg" alt="Tony Sumpton - Founder" class="founder-image">
+                            </div>
+                            <div class="founder-text">
+                                <h3>Tony Sumpton</h3>
+                                <div class="founder-title">Founder & Principal Builder</div>
+                                <p class="founder-bio">With over 25 years of hands-on experience in Brisbane's building industry, Tony established Handee Solutions on a simple principle: exceptional craftsmanship starts with understanding the fundamentals of structural integrity.</p>
+                                <p class="founder-bio">A fully licensed builder who still works alongside his team on every major project, Tony brings both technical expertise and personal accountability to every job. His approach combines old-school attention to detail with modern building techniques, ensuring that each project meets the highest standards of quality and durability.</p>
+                                <p class="founder-bio">"I believe in building relationships as solid as the structures we create. That's why we treat every home and every client with the same care and respect we'd want for our own families."</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -935,9 +1050,14 @@
                 <div class="integrity-content">
                     <div class="integrity-text">
                         <h2>The Anatomy of Integrity</h2>
-                        <p>Twenty-five years of uncompromising quality in every layer. We don’t just build—we fortify. Where others see a surface, we see a system. By focusing on structural protection and multi-layer waterproofing protocols over mere finishes, we ensure your property stands the test of time.</p>
+                        <p>Twenty years of integrity in every substrate, every frame, and every finish. We don't just build—we reinforce.</p>
                         <p>While others focus on the paint, we focus on the protection. Our waterproofing and structural work follows rigorous multi-layer protocols ensuring decades of service.</p>
                         
+                        <div class="spec-box">
+                            <div class="spec-box-label">TECHNICAL SPECIFICATION</div>
+                            <h3>4-Layer Membrane System</h3>
+                        </div>
+                    </div>
                     
                     <div class="principles">
                         <div class="principle">
@@ -1100,3 +1220,4 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
+   
